@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Assessment</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>Career Assessment</h1>
+
+        <p>
+            Fill in your details and let our AI recommend the best career path for you.
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <div class="card">
+
+                <h2>👤 Personal Information</h2>
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Full Name"
+                        required
+                    >
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        min="0"
+                        max="10"
+                        name="cgpa"
+                        placeholder="CGPA"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>💻 Technical Skills</h2>
+
+                <div class="checkbox-grid">
+
+                    <label><input type="checkbox" name="skills" value="python"> Python</label>
+
+                    <label><input type="checkbox" name="skills" value="java"> Java</label>
+
+                    <label><input type="checkbox" name="skills" value="machine learning"> Machine Learning</label>
+
+                    <label><input type="checkbox" name="skills" value="ai"> Artificial Intelligence</label>
+
+                    <label><input type="checkbox" name="skills" value="html"> HTML</label>
+
+                    <label><input type="checkbox" name="skills" value="css"> CSS</label>
+
+                    <label><input type="checkbox" name="skills" value="javascript"> JavaScript</label>
+
+                    <label><input type="checkbox" name="skills" value="data"> Data Science</label>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🎯 Career Interest</h2>
+
+                <div class="radio-grid">
+
+                    <label><input type="radio" name="interest" value="AI" required> Artificial Intelligence</label>
+
+                    <label><input type="radio" name="interest" value="Web"> Web Development</label>
+
+                    <label><input type="radio" name="interest" value="Data"> Data Science</label>
+
+                    <label><input type="radio" name="interest" value="Backend"> Backend Development</label>
+
+                </div>
+
+            </div>
+
+            <button class="btn submit-btn" id="submitBtn" type="submit">
+                🚀 Analyze My Career
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- Loading Screen -->
+
+<div id="loading" class="loading-box">
+
+    <div class="spinner"></div>
+
+    <h2>🤖 Gemini AI is analyzing your profile...</h2>
+
+    <p>Please wait a few seconds.</p>
+
+</div>
+
+<script>
+
+const form = document.querySelector("form");
+
+const loading = document.getElementById("loading");
+
+form.addEventListener("submit", function(){
+
+    loading.style.display = "flex";
+
+});
+
+</script>
+
+</body>
+
+</html>

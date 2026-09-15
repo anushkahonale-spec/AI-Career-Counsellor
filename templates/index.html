@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Career Counsellor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar">
+    <div class="navbar-container">
+        <div class="logo">AI Career Counsellor</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/form">Test</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="hero">
+    <h1>🤖 AI Career Counsellor</h1>
+    <p class="subtitle">Discover your ideal tech career using smart skill analysis</p>
+</div>
+
+<div class="card">
+
+<form action="/predict" method="POST">
+
+    <h3>🎯 Select Your Skills</h3>
+
+    <label><input type="checkbox" name="skills" value="python"> Python</label>
+    <label><input type="checkbox" name="skills" value="machine learning"> Machine Learning</label>
+    <label><input type="checkbox" name="skills" value="ai"> AI</label>
+    <label><input type="checkbox" name="skills" value="data"> Data Science</label>
+    <label><input type="checkbox" name="skills" value="html"> HTML</label>
+    <label><input type="checkbox" name="skills" value="css"> CSS</label>
+    <label><input type="checkbox" name="skills" value="javascript"> JavaScript</label>
+
+    <button class="btn" type="submit">🚀 Get Career Suggestions</button>
+
+</form>
+
+</div>
+
+<p class="tag">Powered by Flask + Smart Scoring System</p>
+
+</div>
+
+</body>
+</html>

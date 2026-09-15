@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Report</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="report-container">
+
+    <!-- Header -->
+
+    <div class="report-header">
+
+        <h1>🚀 AI Career Report</h1>
+
+        <p>Your personalized career analysis powered by Gemini AI</p>
+
+    </div>
+
+    <!-- Hero -->
+
+    <div class="hero-report">
+
+        <h2>Hello, {{ name }} 👋</h2>
+
+        <h1>{{ career }}</h1>
+
+        <p>{{ why }}</p>
+
+    </div>
+
+    <!-- Top Cards -->
+
+    <div class="report-grid">
+
+        <div class="report-card">
+
+            <h3>📈 Career Match</h3>
+
+            <div class="progress">
+
+                <div class="progress-bar" style="width: {{ score }}%;"></div>
+
+            </div>
+
+            <h2>{{ score }}%</h2>
+
+        </div>
+
+        <div class="report-card">
+
+            <h3>💰 Expected Salary</h3>
+
+            <h2>{{ salary }}</h2>
+
+        </div>
+
+    </div>
+
+    <!-- Companies -->
+
+    <div class="report-card">
+
+        <h3>🏢 Top Companies</h3>
+
+        <div class="badge-container">
+
+            {% for company in companies %}
+
+                <span class="badge">{{ company }}</span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- Skills -->
+
+    <div class="report-card">
+
+        <h3>📚 Skills To Learn</h3>
+
+        <div class="badge-container">
+
+            {% for skill in skills %}
+
+                <span class="badge skill">{{ skill }}</span>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- Roadmap -->
+
+    <div class="report-card">
+
+        <h3>🛣️ Career Roadmap</h3>
+
+        <ul class="timeline">
+
+            {% for step in roadmap %}
+
+                <li>{{ step }}</li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="buttons">
+
+        <a href="/form" class="btn">
+            🔄 Take Assessment Again
+        </a>
+
+        <a href="/" class="btn secondary">
+            🏠 Home
+        </a>
+
+        <a href="/download" class="btn download-btn">
+            📄 Download PDF
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
