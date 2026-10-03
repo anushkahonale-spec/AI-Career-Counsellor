@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Counsellor | Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-page">
+
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <div class="dashboard-header">
+
+        <h1>📊 AI Career Dashboard</h1>
+
+        <p>
+            Manage and view all AI Career Assessment Reports.
+        </p>
+
+    </div>
+
+
+    <!-- ==========================================
+         SEARCH
+    =========================================== -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search by Name, Career, CGPA..."
+        >
+
+    </div>
+
+
+    <!-- ==========================================
+         STATISTICS
+    =========================================== -->
+
+    <div class="dashboard-stats">
+
+
+        <div class="stat-box">
+
+            <h2>
+                {{ stats.total }}
+            </h2>
+
+            <p>
+                Total Reports
+            </p>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <h2>
+                {{ stats.cgpa }}
+            </h2>
+
+            <p>
+                Average CGPA
+            </p>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <h2>
+                {{ stats.match }}%
+            </h2>
+
+            <p>
+                Average Match
+            </p>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <h2>
+                {{ stats.career }}
+            </h2>
+
+            <p>
+                Top Career
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ==========================================
+         CHARTS
+    =========================================== -->
+
+    <div class="charts-container">
+
+
+        <!-- CAREER DISTRIBUTION -->
+
+        <div class="chart-card">
+
+            <h2>
+                📊 Career Distribution
+            </h2>
+
+            <canvas id="careerChart"></canvas>
+
+        </div>
+
+
+        <!-- MATCH SCORE -->
+
+        <div class="chart-card">
+
+            <h2>
+                📈 Match Score Analysis
+            </h2>
+
+            <canvas id="matchChart"></canvas>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ==========================================
+         REPORT TABLE
+    =========================================== -->
+
+    <div class="table-card">
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>CGPA</th>
+
+                    <th>Career</th>
+
+                    <th>Match %</th>
+
+                    <th>Salary</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% if reports %}
+
+
+                    {% for report in reports %}
+
+
+                    <tr>
+
+
+                        <!-- ID -->
+
+                        <td>
+                            {{ report[0] }}
+                        </td>
+
+
+                        <!-- NAME -->
+
+                        <td>
+                            {{ report[1] }}
+                        </td>
+
+
+                        <!-- CGPA -->
+
+                        <td>
+                            {{ report[2] }}
+                        </td>
+
+
+                        <!-- CAREER -->
+
+                        <td>
+                            {{ report[3] }}
+                        </td>
+
+
+                        <!-- MATCH -->
+
+                        <td>
+                            {{ report[4] }}%
+                        </td>
+
+
+                        <!-- SALARY -->
+
+                        <td>
+                            {{ report[5] }}
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+
+                            <!-- VIEW REPORT -->
+
+                            <a
+                                href="/report/{{ report[0] }}"
+                                class="view-btn"
+                            >
+                                👁 View
+                            </a>
+
+
+                            <!-- DELETE REPORT -->
+
+                            <a
+                                href="/delete/{{ report[0] }}"
+                                class="delete-btn"
+                                onclick="return confirm('Are you sure you want to delete this report?');"
+                            >
+                                🗑 Delete
+                            </a>
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                {% else %}
+
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            No reports available.
+
+                        </td>
+
+                    </tr>
+
+
+                {% endif %}
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </div>
+
+
+    <!-- ==========================================
+         DASHBOARD BUTTONS
+    =========================================== -->
+
+    <div class="dashboard-buttons">
+
+
+        <a
+            href="/"
+            class="btn"
+        >
+            🏠 Home
+        </a>
+
+
+        <a
+            href="/form"
+            class="btn secondary"
+        >
+            ➕ New Assessment
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- ==========================================
+     CHART.JS
+=========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- ==========================================
+     CUSTOM CHARTS
+=========================================== -->
+
+<script
+    src="{{ url_for('static', filename='charts.js') }}"
+></script>
+
+
+<!-- ==========================================
+     SEARCH
+=========================================== -->
+
+<script
+    src="{{ url_for('static', filename='search.js') }}"
+></script>
+
+
+</body>
+
+</html>
